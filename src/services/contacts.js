@@ -7,3 +7,23 @@ export async function getAllContacts() {
 export async function getContactsById(contactId) {
   return await ContactsCollection.findById(contactId);
 }
+
+export async function createContact(data) {
+  const newContact = await ContactsCollection.create(data);
+  return newContact;
+}
+
+export async function updateContactById(contactId, data) {
+  const updatedContact = await ContactsCollection.findByIdAndUpdate(
+    contactId,
+    data,
+    { new: true },
+  );
+
+  return updatedContact;
+}
+
+export async function deleteContactById(contactId) {
+  const result = await ContactsCollection.findByIdAndDelete(contactId);
+  return result;
+}

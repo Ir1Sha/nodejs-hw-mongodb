@@ -1,6 +1,6 @@
 import { getAllContacts } from '../services/contacts.js';
 
-export const getAllContactsController = async (req, res) => {
+export const getAllContactsController = async (req, res, next) => {
   try {
     const contacts = await getAllContacts();
 
@@ -10,10 +10,6 @@ export const getAllContactsController = async (req, res) => {
       data: contacts,
     });
   } catch (error) {
-    console.error('Error in getAllContactsController:', error.message);
-    res.status(500).json({
-      status: 500,
-      message: 'Server error',
-    });
+    next(error);
   }
 };
