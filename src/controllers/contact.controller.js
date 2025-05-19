@@ -27,6 +27,13 @@ export const getContactIdController = async (req, res, next) => {
 
 export const createContactController = async (req, res, next) => {
   try {
+    if (!req.body || Object.keys(req.body).length === 0) {
+      return res.status(400).json({
+        status: 400,
+        message: 'Missing required fields',
+      });
+    }
+
     const { name, phoneNumber, email, isFavourite, contactType } = req.body;
 
     if (!name || !phoneNumber || !contactType) {
