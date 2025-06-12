@@ -9,6 +9,8 @@ import { errorHandler } from './middlewares/errorHandler.js';
 
 import cookieParser from 'cookie-parser';
 
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
+
 export function setupServer() {
   const app = express();
 
@@ -23,6 +25,8 @@ export function setupServer() {
       },
     }),
   );
+
+  app.use('/api-docs', swaggerDocs());
 
   app.use('/contacts', contactsRouter);
   app.use('/auth', authRouter);
