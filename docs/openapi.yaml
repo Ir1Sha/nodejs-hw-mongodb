@@ -12,7 +12,6 @@ tags:
     description: Operations with user contacts
 
 servers:
-  - url: http://localhost:3000
   - url: https://nodejs-hw-mongodb-dwzr.onrender.com
 
 paths:
